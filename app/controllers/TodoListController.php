@@ -3,6 +3,14 @@
 class TodoListController extends \BaseController {
 
 	/**
+	 * Register controller filter
+	 */
+	public function __construct() {
+		$this->beforeFilter('csrf', ['on'=>'post']);
+	}
+
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -20,9 +28,7 @@ class TodoListController extends \BaseController {
 	 */
 	public function create()
 	{
-		$todo = new TodoList();
-		$todo->title = "His List";
-		$todo->save();
+		return View::make('todos.create');
 	}
 
 
@@ -33,7 +39,10 @@ class TodoListController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$todo = new TodoList();
+		$todo->title = Input::get('title');
+		$todo->save();
+		return Redirect::route('todos.index');
 	}
 
 
