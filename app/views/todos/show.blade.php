@@ -1,4 +1,4 @@
 @extends('layouts.main')
 @section('content')
-	Viewing Todo {{ $id }}
+	<h1>{{ $todo->title }}</h1>
 @stop

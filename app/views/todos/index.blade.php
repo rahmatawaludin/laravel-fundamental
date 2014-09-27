@@ -1,4 +1,6 @@
 @extends('layouts.main')
 @section('content')
-	Displaying all todos..
+	@foreach (TodoList::all() as $todo)
+		<h1>{{{ $todo->title }}}</h1>
+	@endforeach
 @stop
